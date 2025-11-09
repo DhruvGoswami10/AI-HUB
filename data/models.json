@@ -1,0 +1,54 @@
+[
+  {
+    "id": "model-001",
+    "name": "GPT-4o",
+    "provider": "OpenAI",
+    "params": "1.8T (est.)",
+    "context": "128k",
+    "modalities": ["Text", "Vision", "Audio"],
+    "domains": ["Multimodal", "Assistant"],
+    "benchmarks": { "mmlu": 88.5 },
+    "efficiency": "86 tokens / s @ A100",
+    "link": "https://openai.com/index/gpt-4o-and-gpt-4o-mini/",
+    "timestamp": "2024-05-13T10:00:00Z"
+  },
+  {
+    "id": "model-002",
+    "name": "Claude 3.5 Sonnet",
+    "provider": "Anthropic",
+    "params": "860B (est.)",
+    "context": "200k",
+    "modalities": ["Text", "Vision"],
+    "domains": ["Reasoning", "Enterprise"],
+    "benchmarks": { "mmlu": 90.0 },
+    "efficiency": "75 tokens / s @ H100",
+    "link": "https://www.anthropic.com/news/claude-3-5-sonnet",
+    "timestamp": "2024-06-20T09:00:00Z"
+  },
+  {
+    "id": "model-003",
+    "name": "Gemini 1.5 Pro",
+    "provider": "Google",
+    "params": "1.6T (mixture)",
+    "context": "1M",
+    "modalities": ["Text", "Vision", "Audio", "Video"],
+    "domains": ["Multimodal", "Long Context"],
+    "benchmarks": { "mmlu": 87.1 },
+    "efficiency": "Streaming @ TPU v5p",
+    "link": "https://blog.google/technology/google-deepmind/google-gemini-ai/",
+    "timestamp": "2024-06-05T11:45:00Z"
+  },
+  {
+    "id": "model-004",
+    "name": "Llama 3.1 405B",
+    "provider": "Meta",
+    "params": "405B",
+    "context": "128k",
+    "modalities": ["Text"],
+    "domains": ["Open Source", "Research"],
+    "benchmarks": { "mmlu": 82.4 },
+    "efficiency": "52 tokens / s @ custom cluster",
+    "link": "https://ai.meta.com/blog/llama-3-1/",
+    "timestamp": "2024-07-23T09:10:00Z"
+  }
+]

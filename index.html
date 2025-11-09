@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>AI HUB Terminal</title>
+    <meta
+      name="description"
+      content="AI HUB — Bloomberg-style terminal for AI news, research briefs, and model intelligence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="app-shell">
+      <header class="masthead">
+        <div class="brand-block">
+          <div class="logo-mark">AI</div>
+          <div>
+            <p class="terminal-label">Terminal // 001</p>
+            <h1>AI HUB</h1>
+            <p class="tagline">Frontier intelligence for model strategists</p>
+          </div>
+        </div>
+        <div class="system-metrics" aria-live="polite">
+          <div class="metric">
+            <span class="metric-label">Data Stream</span>
+            <span class="status-dot online"></span>
+            <span>Connected</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Latency</span>
+            <strong id="latency-readout">23ms</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Last Sync</span>
+            <strong id="last-sync">—</strong>
+          </div>
+        </div>
+        <div class="masthead-actions">
+          <button id="search-trigger" class="ghost-btn" aria-haspopup="dialog">
+            Ctrl + K
+          </button>
+          <div class="mini-clock" id="utc-clock">00:00 UTC</div>
+        </div>
+      </header>
+
+      <section class="ticker" aria-label="Signal ticker">
+        <div class="ticker-track" id="ticker-track">
+          <span>Δ GPT policy memo leaks caution around multi-agent autonomy.</span>
+          <span>Δ Chips: NVIDIA doubles down on sovereign AI clusters.</span>
+          <span>Δ Frontier: 1.8T parameter contenders prepping for eval week.</span>
+          <span>Δ Talent: Paris + SF labs compete over robotics pre-training leads.</span>
+        </div>
+      </section>
+
+      <section class="filters-bar">
+        <div class="filter-group" role="tablist" aria-label="Panel filters">
+          <button class="filter-chip active" data-filter="all">All Streams</button>
+          <button class="filter-chip" data-filter="news">News</button>
+          <button class="filter-chip" data-filter="research">Research</button>
+          <button class="filter-chip" data-filter="models">Models</button>
+        </div>
+        <div class="tag-filter-group">
+          <p>Focus:</p>
+          <div id="tag-filters" class="tags"></div>
+        </div>
+      </section>
+
+      <main class="terminal-grid">
+        <section
+          id="news-panel"
+          class="panel tall"
+          data-panel="news"
+          aria-live="polite"
+        >
+          <header>
+            <div>
+              <p class="panel-label">Dispatch // 01</p>
+              <h2>Latest AI Market News</h2>
+            </div>
+            <span class="panel-meta" id="news-count">0 briefs</span>
+          </header>
+          <div class="panel-content" id="news-feed"></div>
+        </section>
+
+        <section
+          id="research-panel"
+          class="panel tall"
+          data-panel="research"
+          aria-live="polite"
+        >
+          <header>
+            <div>
+              <p class="panel-label">Dispatch // 02</p>
+              <h2>Research Papers</h2>
+            </div>
+            <span class="panel-meta" id="research-count">0 drops</span>
+          </header>
+          <div class="panel-content" id="research-feed"></div>
+        </section>
+
+        <section
+          id="models-panel"
+          class="panel wide"
+          data-panel="models"
+          aria-live="polite"
+        >
+          <header>
+            <div>
+              <p class="panel-label">Dispatch // 03</p>
+              <h2>Model Comparison Matrix</h2>
+            </div>
+            <span class="panel-meta" id="models-count">0 tracked</span>
+          </header>
+          <div class="panel-content">
+            <table class="models-table" id="models-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Provider</th>
+                  <th>Params</th>
+                  <th>Context</th>
+                  <th>Modalities</th>
+                  <th>MMLU</th>
+                  <th>Efficiency</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" id="signal-panel">
+          <header>
+            <div>
+              <p class="panel-label">Signals</p>
+              <h2>Ops Console</h2>
+            </div>
+          </header>
+          <div class="panel-content" id="signals-feed">
+            <div class="signal-row">
+              <span class="signal-label">Command Palette</span>
+              <span class="signal-value">Ctrl + K</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Active Tag Filter</span>
+              <span class="signal-value" id="active-tag">None</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Streams Loaded</span>
+              <span class="signal-value" id="stream-count">0</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Synthetic API Calls</span>
+              <span class="signal-value">3 localized JSON feeds</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div
+      class="command-palette"
+      id="command-palette"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="palette-panel" role="document">
+        <header class="palette-header">
+          <div>
+            <p class="panel-label">Global Search</p>
+            <h3>Streams // News · Research · Models</h3>
+          </div>
+          <button
+            class="ghost-btn"
+            type="button"
+            aria-label="Close command palette"
+            id="palette-close"
+          >
+            Esc
+          </button>
+        </header>
+        <input
+          type="search"
+          class="palette-input"
+          id="palette-input"
+          placeholder="Type a query or tag…"
+          autocomplete="off"
+        />
+        <div class="palette-results" id="palette-results" role="listbox"></div>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

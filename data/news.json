@@ -1,0 +1,42 @@
+[
+  {
+    "id": "news-001",
+    "title": "OpenAI unveils GPT-4o mini for faster multimodal flows",
+    "source": "OpenAI",
+    "region": "SF",
+    "timestamp": "2024-07-18T15:30:00Z",
+    "summary": "OpenAI introduced GPT-4o mini, a compact multimodal model aimed at low-latency reasoning and voice experiences while keeping costs down for developers.",
+    "tags": ["Multimodal", "Product"],
+    "link": "https://openai.com/index/introducing-gpt-4o-mini/"
+  },
+  {
+    "id": "news-002",
+    "title": "Anthropic ships Claude 3.5 Sonnet to enterprise clients",
+    "source": "Anthropic",
+    "region": "SF",
+    "timestamp": "2024-08-14T10:00:00Z",
+    "summary": "Claude 3.5 Sonnet pushes reasoning accuracy, adds vision support, and lands inside the Claude Enterprise suite with deeper admin controls.",
+    "tags": ["Enterprise", "Reasoning"],
+    "link": "https://www.anthropic.com/news/claude-3-5-sonnet"
+  },
+  {
+    "id": "news-003",
+    "title": "Meta releases Llama 3.1 with 405B parameter flagship",
+    "source": "Meta AI",
+    "region": "Menlo Park",
+    "timestamp": "2024-07-23T09:10:00Z",
+    "summary": "Meta AI announced Llama 3.1 with expanded context windows, better multilingual coverage, and a 405B parameter option tuned for retrieval-augmented systems.",
+    "tags": ["Open Source", "Scaling"],
+    "link": "https://ai.meta.com/blog/llama-3-1/"
+  },
+  {
+    "id": "news-004",
+    "title": "NVIDIA details Blackwell GPUs and GB200 NVL72 rack",
+    "source": "NVIDIA",
+    "region": "San Jose",
+    "timestamp": "2024-06-04T17:45:00Z",
+    "summary": "At GTC the company lifted the lid on Blackwell architecture, highlighting GB200 superchips and liquid-cooled racks tuned for frontier training budgets.",
+    "tags": ["Hardware", "Infra"],
+    "link": "https://blogs.nvidia.com/blog/blackwell-architecture-gtc-2024/"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "res-001",
+    "title": "Self-Rewarding Language Models",
+    "authors": ["Y. Bai", "N. Brown", "J. Song"],
+    "organization": "Google DeepMind",
+    "timestamp": "2024-02-02T12:10:00Z",
+    "abstract": "Demonstrates that large language models can iteratively critique and improve their own outputs without relying on expensive external reward models, unlocking cheaper autonomy loops.",
+    "tags": ["RLHF", "Autonomy"],
+    "link": "https://arxiv.org/abs/2401.01335"
+  },
+  {
+    "id": "res-002",
+    "title": "DeepSeek-R1: Incentivizing Reasoning in LLMs",
+    "authors": ["DeepSeek-AI"],
+    "organization": "DeepSeek",
+    "timestamp": "2024-06-18T07:30:00Z",
+    "abstract": "Presents a hybrid reinforcement and supervised training pipeline that coaxes multi-step reasoning via sparse reward shaping, hitting 90% on AIME 2024.",
+    "tags": ["Reasoning", "RL"],
+    "link": "https://arxiv.org/abs/2401.14196"
+  },
+  {
+    "id": "res-003",
+    "title": "Voyager: An Open-Ended Embodied Agent in Minecraft",
+    "authors": ["G. Ren", "T. Du", "J. Wu"],
+    "organization": "NVIDIA Research",
+    "timestamp": "2024-03-27T18:00:00Z",
+    "abstract": "Introduces a lifelong learning agent that writes, executes, and improves programs in-game, continually expanding skills without reset.",
+    "tags": ["Agents", "Embodied AI"],
+    "link": "https://arxiv.org/abs/2305.16291"
+  },
+  {
+    "id": "res-004",
+    "title": "Token Turing Machines",
+    "authors": ["L. Chen", "J. Zeng"],
+    "organization": "MIT CSAIL",
+    "timestamp": "2024-05-05T09:00:00Z",
+    "abstract": "Explores theoretical limits of transformer expressivity by mapping them to differentiable Turing machines, clarifying how depth trades off with context length.",
+    "tags": ["Theory", "Transformers"],
+    "link": "https://arxiv.org/abs/2405.13105"
+  }
+]
