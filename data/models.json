@@ -50,5 +50,44 @@
     "efficiency": "52 tokens / s @ custom cluster",
     "link": "https://ai.meta.com/blog/llama-3-1/",
     "timestamp": "2024-07-23T09:10:00Z"
+  },
+  {
+    "id": "model-005",
+    "name": "GPT-4o mini",
+    "provider": "OpenAI",
+    "params": "Mini (12B est.)",
+    "context": "128k",
+    "modalities": ["Text", "Vision", "Audio"],
+    "domains": ["Assistants", "Edge"],
+    "benchmarks": { "mmlu": 79.0 },
+    "efficiency": "140 tokens / s @ iPhone 15 Pro",
+    "link": "https://openai.com/index/introducing-gpt-4o-mini/",
+    "timestamp": "2024-07-18T15:30:00Z"
+  },
+  {
+    "id": "model-006",
+    "name": "DeepSeek-R1",
+    "provider": "DeepSeek",
+    "params": "120B",
+    "context": "64k",
+    "modalities": ["Text"],
+    "domains": ["Reasoning", "Math"],
+    "benchmarks": { "mmlu": 85.2 },
+    "efficiency": "63 tokens / s @ H800 cluster",
+    "link": "https://deepseek.com/blog/deepseek-r1",
+    "timestamp": "2024-08-08T08:00:00Z"
+  },
+  {
+    "id": "model-007",
+    "name": "Grok-2",
+    "provider": "xAI",
+    "params": "560B (Mixture)",
+    "context": "256k",
+    "modalities": ["Text", "Vision"],
+    "domains": ["Real-time", "Search"],
+    "benchmarks": { "mmlu": 84.7 },
+    "efficiency": "Streaming @ xAI inference fabric",
+    "link": "https://x.ai/blog/grok-2",
+    "timestamp": "2024-08-10T13:45:00Z"
   }
 ]

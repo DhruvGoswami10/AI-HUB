@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vid-001",
+    "title": "OpenAI DevDay 2023 Keynote",
+    "channel": "OpenAI",
+    "duration": "1:12:25",
+    "timestamp": "2023-11-06T17:00:00Z",
+    "summary": "Sam Altman and team walk through GPT-4 Turbo, Assistants API, and the company’s product road map during the DevDay keynote.",
+    "tags": ["OpenAI", "Product"],
+    "link": "https://www.youtube.com/watch?v=U9mJuUkhUzk"
+  },
+  {
+    "id": "vid-002",
+    "title": "Introducing Gemini 1.5 Pro",
+    "channel": "Google DeepMind",
+    "duration": "8:42",
+    "timestamp": "2024-02-15T15:00:00Z",
+    "summary": "Gemini leads share how multimodal context windows stretch to 1M tokens and what that unlocks for live reasoning.",
+    "tags": ["Google", "Multimodal"],
+    "link": "https://www.youtube.com/watch?v=dOxUroR57xs"
+  },
+  {
+    "id": "vid-003",
+    "title": "But What Is a Neural Network?",
+    "channel": "3Blue1Brown",
+    "duration": "19:13",
+    "timestamp": "2017-10-05T12:00:00Z",
+    "summary": "Grant Sanderson visualizes how layers, activation functions, and training work—still the go-to explainer for newcomers to LLM internals.",
+    "tags": ["Education", "Neural Nets"],
+    "link": "https://www.youtube.com/watch?v=IHZwWFHWa-w"
+  }
+]

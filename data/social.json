@@ -1,0 +1,32 @@
+[
+  {
+    "id": "social-001",
+    "author": "Rowan Cheung",
+    "handle": "rowancheung",
+    "content": "Weekly AI wrap: GPT-4o launches, Apple leans into accessibility with eye-tracking, Google’s Project Astra demo lands, and Meta teases Camerabuds.",
+    "timestamp": "2024-05-16T15:30:00Z",
+    "stats": { "likes": "4.2K", "reposts": "980" },
+    "tags": ["AI Rundown", "Product"],
+    "link": "https://threadreaderapp.com/thread/1790783202639978593.html"
+  },
+  {
+    "id": "social-002",
+    "author": "Min Choi",
+    "handle": "minchoi",
+    "content": "Anthropic’s new Computer Use feature is barely 24 hours old and builders already have it auto-skipping YouTube ads, reconciling expenses, and QA’ing workflows.",
+    "timestamp": "2024-10-23T10:05:00Z",
+    "stats": { "likes": "2.1K", "reposts": "310" },
+    "tags": ["Anthropic", "Agents"],
+    "link": "https://threadreaderapp.com/thread/1849110822833766491.html"
+  },
+  {
+    "id": "social-003",
+    "author": "Saif M. Khan",
+    "handle": "KhanSaifM",
+    "content": "Policy deep dive on a rumored NVIDIA B30A export SKU for China—half the Blackwell B300 yet still miles ahead of H20-class chips, and what that means for compute controls.",
+    "timestamp": "2025-10-29T18:17:00Z",
+    "stats": { "likes": "1.3K", "reposts": "220" },
+    "tags": ["Policy", "Chips"],
+    "link": "https://threadreaderapp.com/thread/1982859134530937049.html"
+  }
+]

@@ -69,6 +69,8 @@
           <button class="filter-chip" data-filter="news">News</button>
           <button class="filter-chip" data-filter="research">Research</button>
           <button class="filter-chip" data-filter="models">Models</button>
+          <button class="filter-chip" data-filter="videos">Videos</button>
+          <button class="filter-chip" data-filter="social">Social</button>
         </div>
         <div class="tag-filter-group">
           <p>Focus:</p>
@@ -77,6 +79,67 @@
       </section>
 
       <main class="terminal-grid">
+        <section
+          id="models-panel"
+          class="panel"
+          data-panel="models"
+          aria-live="polite"
+        >
+          <header>
+            <div>
+              <p class="panel-label">Dispatch // 03</p>
+              <h2>Model Comparison Matrix</h2>
+            </div>
+            <span class="panel-meta" id="models-count">0 tracked</span>
+          </header>
+          <div class="panel-content" id="models-grid"></div>
+        </section>
+
+        <section class="panel" id="signal-panel">
+          <header>
+            <div>
+              <p class="panel-label">Signals</p>
+              <h2>Ops Console</h2>
+            </div>
+          </header>
+          <div class="panel-content" id="signals-feed">
+            <div class="signal-row">
+              <span class="signal-label">Command Palette</span>
+              <span class="signal-value">Ctrl + K</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Active Tag Filter</span>
+              <span class="signal-value" id="active-tag">None</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Streams Loaded</span>
+              <span class="signal-value" id="stream-count">0</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Synthetic API Calls</span>
+              <span class="signal-value">5 localized JSON feeds</span>
+            </div>
+          </div>
+          <div class="dispatch-links" aria-label="Dispatch directory">
+            <a href="#news-panel" class="dispatch-link">
+              <span class="dispatch-code">Dispatch // 01</span>
+              <span>Latest AI Market News</span>
+            </a>
+            <a href="#research-panel" class="dispatch-link">
+              <span class="dispatch-code">Dispatch // 02</span>
+              <span>Research Papers</span>
+            </a>
+            <a href="#models-panel" class="dispatch-link">
+              <span class="dispatch-code">Dispatch // 03</span>
+              <span>Model Comparison Matrix</span>
+            </a>
+            <a href="#videos-panel" class="dispatch-link">
+              <span class="dispatch-code">Dispatch // 04</span>
+              <span>Explainer Videos</span>
+            </a>
+          </div>
+        </section>
+
         <section
           id="news-panel"
           class="panel tall"
@@ -110,61 +173,35 @@
         </section>
 
         <section
-          id="models-panel"
-          class="panel wide"
-          data-panel="models"
+          id="videos-panel"
+          class="panel"
+          data-panel="videos"
           aria-live="polite"
         >
           <header>
             <div>
-              <p class="panel-label">Dispatch // 03</p>
-              <h2>Model Comparison Matrix</h2>
+              <p class="panel-label">Dispatch // 04</p>
+              <h2>Explainer Videos</h2>
             </div>
-            <span class="panel-meta" id="models-count">0 tracked</span>
+            <span class="panel-meta" id="videos-count">0 videos</span>
           </header>
-          <div class="panel-content">
-            <table class="models-table" id="models-table">
-              <thead>
-                <tr>
-                  <th>Model</th>
-                  <th>Provider</th>
-                  <th>Params</th>
-                  <th>Context</th>
-                  <th>Modalities</th>
-                  <th>MMLU</th>
-                  <th>Efficiency</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <div class="panel-content" id="videos-feed"></div>
         </section>
 
-        <section class="panel" id="signal-panel">
+        <section
+          id="social-panel"
+          class="panel"
+          data-panel="social"
+          aria-live="polite"
+        >
           <header>
             <div>
-              <p class="panel-label">Signals</p>
-              <h2>Ops Console</h2>
+              <p class="panel-label">Dispatch // 05</p>
+              <h2>Trending X Feeds</h2>
             </div>
+            <span class="panel-meta" id="social-count">0 posts</span>
           </header>
-          <div class="panel-content" id="signals-feed">
-            <div class="signal-row">
-              <span class="signal-label">Command Palette</span>
-              <span class="signal-value">Ctrl + K</span>
-            </div>
-            <div class="signal-row">
-              <span class="signal-label">Active Tag Filter</span>
-              <span class="signal-value" id="active-tag">None</span>
-            </div>
-            <div class="signal-row">
-              <span class="signal-label">Streams Loaded</span>
-              <span class="signal-value" id="stream-count">0</span>
-            </div>
-            <div class="signal-row">
-              <span class="signal-label">Synthetic API Calls</span>
-              <span class="signal-value">3 localized JSON feeds</span>
-            </div>
-          </div>
+          <div class="panel-content" id="social-feed"></div>
         </section>
       </main>
     </div>
@@ -180,7 +217,7 @@
         <header class="palette-header">
           <div>
             <p class="panel-label">Global Search</p>
-            <h3>Streams // News · Research · Models</h3>
+            <h3>Streams // News · Research · Models · Videos · Social</h3>
           </div>
           <button
             class="ghost-btn"

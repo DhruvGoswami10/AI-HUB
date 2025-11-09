@@ -5,16 +5,22 @@ const state = {
   news: [],
   research: [],
   models: [],
+  videos: [],
+  social: [],
   combined: [],
 };
 
 const dom = {
   newsFeed: document.getElementById("news-feed"),
   researchFeed: document.getElementById("research-feed"),
-  modelsTable: document.querySelector("#models-table tbody"),
+  modelsGrid: document.getElementById("models-grid"),
+  videosFeed: document.getElementById("videos-feed"),
+  socialFeed: document.getElementById("social-feed"),
   newsCount: document.getElementById("news-count"),
   researchCount: document.getElementById("research-count"),
   modelsCount: document.getElementById("models-count"),
+  videosCount: document.getElementById("videos-count"),
+  socialCount: document.getElementById("social-count"),
   filterChips: document.querySelectorAll(".filter-chip"),
   panels: document.querySelectorAll("[data-panel]"),
   tagFilters: document.getElementById("tag-filters"),
@@ -40,16 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadStreams() {
   try {
-    const [news, research, models] = await Promise.all([
+    const [news, research, models, videos, social] = await Promise.all([
       fetchJSON("./data/news.json"),
       fetchJSON("./data/research.json"),
       fetchJSON("./data/models.json"),
+      fetchJSON("./data/videos.json"),
+      fetchJSON("./data/social.json"),
     ]);
 
     state.news = news;
     state.research = research;
     state.models = models;
-    state.combined = combineStreams(news, research, models);
+    state.videos = videos;
+    state.social = social;
+    state.combined = combineStreams(news, research, models, videos, social);
 
     renderFeeds();
     renderTagFilters();
@@ -61,7 +71,9 @@ async function loadStreams() {
     </div>`;
     dom.newsFeed.innerHTML = msg;
     dom.researchFeed.innerHTML = msg;
-    dom.modelsTable.innerHTML = "";
+    dom.modelsGrid.innerHTML = msg;
+    dom.videosFeed.innerHTML = msg;
+    dom.socialFeed.innerHTML = msg;
   }
 }
 
@@ -77,6 +89,8 @@ function renderFeeds() {
   renderNews();
   renderResearch();
   renderModels();
+  renderVideos();
+  renderSocial();
   renderPaletteResults();
 }
 
@@ -151,32 +165,149 @@ function renderResearch() {
 }
 
 function renderModels() {
-  dom.modelsCount.textContent = `${state.models.length} tracked`;
-  dom.modelsTable.innerHTML = state.models
+  const filtered = applyTag(state.models);
+  dom.modelsCount.textContent = `${filtered.length} tracked`;
+  if (!filtered.length) {
+    dom.modelsGrid.innerHTML =
+      '<p class="panel-empty">No models match this focus tag.</p>';
+    return;
+  }
+
+  dom.modelsGrid.innerHTML = filtered
+    .map((model) => {
+      const modalities = model.modalities.join(" / ");
+      const tags = model.domains || [];
+      return `
+        <article class="model-card">
+          <div class="model-header">
+            <div>
+              <a href="${model.link}" target="_blank" rel="noopener">
+                <h3>${model.name}</h3>
+              </a>
+              <div class="model-meta">
+                <span>${model.provider}</span>
+                <span>${modalities}</span>
+              </div>
+            </div>
+            <span class="model-pill">${model.params}</span>
+          </div>
+          <div class="model-metrics">
+            <div class="model-metric">
+              <label>Context</label>
+              <strong>${model.context}</strong>
+            </div>
+            <div class="model-metric">
+              <label>MMLU</label>
+              <strong>${model.benchmarks.mmlu}%</strong>
+            </div>
+            <div class="model-metric">
+              <label>Efficiency</label>
+              <strong>${model.efficiency}</strong>
+            </div>
+            <div class="model-metric">
+              <label>Updated</label>
+              <strong>${formatRelative(model.timestamp)}</strong>
+            </div>
+          </div>
+          <div class="model-tags">
+            ${tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderVideos() {
+  const filtered = applyTag(state.videos);
+  dom.videosCount.textContent = `${filtered.length} videos`;
+  if (!filtered.length) {
+    dom.videosFeed.innerHTML =
+      '<p class="panel-empty">No explainers tagged like that.</p>';
+    return;
+  }
+
+  dom.videosFeed.innerHTML = filtered
     .map(
-      (model) => `
-      <tr>
-        <td>
-          <a href="${model.link}" target="_blank" rel="noopener">
-            ${model.name}
-          </a>
-        </td>
-        <td>${model.provider}</td>
-        <td>${model.params}</td>
-        <td>${model.context}</td>
-        <td>${model.modalities.join(" / ")}</td>
-        <td>${model.benchmarks.mmlu}%</td>
-        <td>${model.efficiency}</td>
-      </tr>`
+      (video) => `
+        <article class="video-card">
+          <header>
+            <a href="${video.link}" target="_blank" rel="noopener">
+              ${video.title}
+            </a>
+            <span>${formatRelative(video.timestamp)}</span>
+          </header>
+          <p class="video-meta">
+            <span>${video.channel}</span>
+            <span>•</span>
+            <span>${video.duration}</span>
+          </p>
+          <p>${video.summary}</p>
+          <div class="tags-row">
+            ${video.tags
+              .map((tag) => `<span class="tag">${tag}</span>`)
+              .join("")}
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderSocial() {
+  const filtered = applyTag(state.social);
+  dom.socialCount.textContent = `${filtered.length} posts`;
+  if (!filtered.length) {
+    dom.socialFeed.innerHTML =
+      '<p class="panel-empty">No trending posts for that filter.</p>';
+    return;
+  }
+
+  dom.socialFeed.innerHTML = filtered
+    .map(
+      (post) => `
+        <article class="social-card">
+          <header>
+            <a href="${post.link}" target="_blank" rel="noopener">
+              @${post.handle}
+            </a>
+            <span>${formatRelative(post.timestamp)}</span>
+          </header>
+          <p class="social-meta">
+            <span>${post.author}</span>
+            <span>•</span>
+            <span>${post.stats.likes} likes</span>
+            <span>•</span>
+            <span>${post.stats.reposts} reposts</span>
+          </p>
+          <p class="social-content">${post.content}</p>
+          <div class="tags-row">
+            ${post.tags
+              .map((tag) => `<span class="tag">${tag}</span>`)
+              .join("")}
+          </div>
+        </article>
+      `
     )
     .join("");
 }
 
 function renderTagFilters() {
   const tagSet = new Set();
-  [...state.news, ...state.research].forEach((item) => {
-    (item.tags || []).forEach((tag) => tagSet.add(tag));
-  });
+  const collections = [
+    state.news,
+    state.research,
+    state.videos,
+    state.social,
+    state.models,
+  ];
+
+  collections.forEach((collection) =>
+    collection.forEach((item) => {
+      const tags = item.tags || item.domains || [];
+      tags.forEach((tag) => tagSet.add(tag));
+    })
+  );
 
   dom.tagFilters.innerHTML = Array.from(tagSet)
     .slice(0, 10)
@@ -203,7 +334,7 @@ function renderTagFilters() {
 function applyTag(collection) {
   if (!state.activeTag) return collection;
   return collection.filter((item) =>
-    (item.tags || []).includes(state.activeTag)
+    (item.tags || item.domains || []).includes(state.activeTag)
   );
 }
 
@@ -234,10 +365,21 @@ function updatePanelVisibility() {
 }
 
 function updateStats() {
-  const total = state.news.length + state.research.length + state.models.length;
+  const total =
+    state.news.length +
+    state.research.length +
+    state.models.length +
+    state.videos.length +
+    state.social.length;
   dom.streamCount.textContent = total;
 
-  const latestTimestamp = [...state.news, ...state.research]
+  const latestTimestamp = [
+    ...state.news,
+    ...state.research,
+    ...state.videos,
+    ...state.social,
+    ...state.models,
+  ]
     .map((item) => new Date(item.timestamp))
     .sort((a, b) => b - a)[0];
 
@@ -314,7 +456,7 @@ function renderPaletteResults() {
     : '<p class="panel-empty">No signals found. Try a broader query.</p>';
 }
 
-function combineStreams(news, research, models) {
+function combineStreams(news, research, models, videos, social) {
   return [
     ...news.map((item) => ({
       ...item,
@@ -336,6 +478,20 @@ function combineStreams(news, research, models) {
       link: item.link,
       timestamp: item.timestamp,
       subtitle: `${item.params} @ ${item.efficiency}`,
+    })),
+    ...videos.map((item) => ({
+      ...item,
+      type: "VIDEO",
+      subtitle: `${item.channel} • ${item.duration}`,
+    })),
+    ...social.map((item) => ({
+      title: `${item.author} (@${item.handle})`,
+      summary: item.content,
+      tags: item.tags,
+      type: "SOCIAL",
+      link: item.link,
+      timestamp: item.timestamp,
+      subtitle: `${item.stats.likes} likes · ${item.stats.reposts} reposts`,
     })),
   ];
 }
