@@ -5,6 +5,7 @@ Bloomberg-inspired AI intelligence terminal for news, research, and model insigh
 - **Live site**: https://aihublabs.xyz/
 - **GitHub repo**: https://github.com/DhruvGoswami10/AI-HUB
 - **Build video folder**: https://drive.google.com/drive/folders/15cg6juePReh-uyDSP8ROw4JFEZn_kXY8?usp=sharing
+- **Author**: Dhruv Goswami (Student ID: 35373785)
 
 ## Tech Stack
 
