@@ -3,6 +3,7 @@
 Bloomberg-inspired AI intelligence terminal for news, research, and model insights—rendered as a sleek single-page app with a faux-terminal flair.
 
 - **Live site**: https://aihublabs.xyz/
+- **GitHub repo**: https://github.com/DhruvGoswami10/AI-HUB
 - **Build video folder**: https://drive.google.com/drive/folders/15cg6juePReh-uyDSP8ROw4JFEZn_kXY8?usp=sharing
 
 ## Tech Stack
