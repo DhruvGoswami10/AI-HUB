@@ -49,6 +49,15 @@ Modify any JSON file and the UI will automatically reflect the changes on reload
 - Production checklist lives in `docs/DEPLOYMENT.md` (droplet build, Nginx config, DNS/TLS, and maintenance steps).
 - Always document infra changes in Git to keep grading artefacts transparent.
 
+## Assessment Checklist
+
+- **GitHub evidence**: Repo shows continuous commits across the build window plus README/DEPLOYMENT docs with name + student ID (see repo history).
+- **Video explainer**: Build/demo screencast with clear narration hosted here: https://drive.google.com/drive/folders/15cg6juePReh-uyDSP8ROw4JFEZn_kXY8?usp=sharing
+- **Website functionality**: Multi-panel terminal UI (news, research, models, videos, social) with command palette, filters, and live outbound links.
+- **Availability/DNS/TLS**: Custom domain https://aihublabs.xyz/ served via DigitalOcean droplet + Nginx + Let’s Encrypt; DNS + Certbot steps documented in `docs/DEPLOYMENT.md`.
+- **Documentation quality**: Runbook enables full rebuild in <1 hour; PDF submission references the same steps/screenshots.
+- **Scripting**: `app.js` handles JSON fetches, filtering, command palette search, and UI state management; behaviour is demonstrated in the video and live site.
+
 ## Progress Log
 
 1. Repo initialized and roadmap documented (`bootstrapping-the-ai-terminal`).
