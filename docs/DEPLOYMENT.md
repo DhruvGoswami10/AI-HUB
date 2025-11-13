@@ -1,6 +1,6 @@
 # AI HUB Deployment Guide
 
-This document walks through the exact steps required to rebuild and operate the AI HUB terminal on a fresh cloud instance (DigitalOcean droplet, but the same flow applies to EC2/Azure VMs). Follow it sequentially so the environment can be recreated within a couple of hours. The current production instance lives at **https://www.aihublabs.xyz** (IPv4 `170.64.188.172`).
+This document walks through the exact steps required to rebuild and operate the AI HUB terminal on a fresh cloud instance (DigitalOcean droplet, but the same flow applies to EC2/Azure VMs). Follow it sequentially so the environment can be recreated within a couple of hours. The current production instance lives at **https://aihublabs.xyz/**.
 
 ---
 
