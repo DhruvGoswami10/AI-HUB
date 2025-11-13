@@ -2,6 +2,10 @@
 
 Bloomberg-inspired AI intelligence terminal for news, research, and model insights—rendered as a sleek single-page app with a faux-terminal flair.
 
+- **Live site**: https://www.aihublabs.xyz
+- **Server IP**: http://170.64.188.172/
+- **Build video folder**: https://drive.google.com/drive/folders/15cg6juePReh-uyDSP8ROw4JFEZn_kXY8?usp=sharing
+
 ## Tech Stack
 
 - Pure HTML, CSS, and JavaScript for easy deployment on a droplet
@@ -39,6 +43,11 @@ Modify any JSON file and the UI will automatically reflect the changes on reload
 - `Ctrl + K` / `Cmd + K` — open the command palette search.
 - Filter chips let you isolate News, Research, or Model panels visually.
 - Tag pills constrain News + Research feeds to a focused topic (NLP, Hardware, etc.).
+
+## Deployment
+
+- Production checklist lives in `docs/DEPLOYMENT.md` (droplet build, Nginx config, DNS/TLS, and maintenance steps).
+- Always document infra changes in Git to keep grading artefacts transparent.
 
 ## Progress Log
 
